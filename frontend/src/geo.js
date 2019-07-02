@@ -68,10 +68,9 @@ const COUNTRIES = [
 ];
 
 export async function fetchSongs(country) {
-    const code = country.code.toLowerCase();
-    const url = `https://spotifycharts.com/regional/${code}/daily/latest/download`;
+    const url = `/charts/${country.code}`;
     const request = new Request(url);
-    return fetch(request).then(x => x.text);
+    return fetch(request).then(x => x.json());
 }
 
 function deg2rad(deg) {
