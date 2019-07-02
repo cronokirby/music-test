@@ -67,6 +67,13 @@ const COUNTRIES = [
   { code: "ZA", lat: -30.559482, long: 22.937506, name: "South Africa" }
 ];
 
+export async function fetchSongs(country) {
+    const code = country.code.toLowerCase();
+    const url = `https://spotifycharts.com/regional/${code}/daily/latest/download`;
+    const request = new Request(url);
+    return fetch(request).then(x => x.text);
+}
+
 function deg2rad(deg) {
   return (deg * Math.PI) / 180;
 }
